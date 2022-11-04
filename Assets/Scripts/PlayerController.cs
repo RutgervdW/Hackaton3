@@ -7,9 +7,10 @@ public class PlayerController : MonoBehaviour
     public Transform movePoint;
     public LayerMask collisionSet;
     public LayerMask enemySet;
-    public LayerMask itemSet;
-    public LayerMask exitSet;
+    public LayerMask keySet;
+    public LayerMask puzzlePieceSet;
     public LayerMask puzzleSet;
+    public LayerMask exitSet;
 
     private Transform exitPoint;
 
@@ -27,12 +28,11 @@ public class PlayerController : MonoBehaviour
         if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
         {
             CheckIfCollidesWithWallAndMoveMovePoint();
-            if (CheckIfCollidesWithEnemy())
+            if (CollidesWithEnemy())
             {
                 transform.position = exitPoint.position;
                 movePoint.position = transform.position;
             }
-
         }
     }
     
@@ -65,9 +65,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    bool CheckIfCollidesWithEnemy()
+    bool CollidesWithEnemy()
     {
         return Physics2D.OverlapCircle(movePoint.position, .2f, enemySet);
+    }
+    //ingebouwde unity function - als de collider van dit object een trigger aanraakt, doe dan iets
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Exit")
+        {
+
+        }
+
+        else if (other.tag == "PuzzlePiece")
+        {
+            GameManager.instance.puzzlePieces++;
+            other.gameObject.SetActive(false);
+        }
+
+        else if (other.tag == "Key")
+        {
+            GameManager.instance.keys++;
+            other.gameObject.SetActive(false);
+        }
     }
 }
