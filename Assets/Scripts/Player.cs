@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;        //Allows us to use SceneManager
 //Player inherits from Character, our base class for objects that can move, Enemy also inherits from this.
 public class Player : Character
 {
+    /*
     public float restartLevelDelay = 1f;        //Delay time in seconds to restart level.
 
     private int puzzlePieces;

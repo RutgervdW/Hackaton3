@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,7 +10,9 @@ public class GameManager : MonoBehaviour
     //public BoardManager boardScript;
     public int puzzlePieces = 0;
     public int keys = 0;
-    [HideInInspector] public bool playersTurn = true;
+    public int puzzlePiecesInLevel = 0;
+    public TextMeshProUGUI puzzlePiecesText;
+    public TextMeshProUGUI keysText;
 
     void Awake()
     {
@@ -23,16 +27,8 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if (playersTurn == false)
-        {
-            StartCoroutine(WaitHalfSecond());
-            playersTurn = true;
-        }
-    }
-
-    private IEnumerator WaitHalfSecond()
-    {
-        yield return new WaitForSeconds(0.5f);
+        keysText.text = "Keys:" +keys.ToString();
+        puzzlePiecesText.text = "Puzzle Pieces: " + puzzlePieces.ToString() + "/" + puzzlePiecesInLevel.ToString();
     }
 
     public void GameOver()

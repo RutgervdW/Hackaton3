@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
+    /*
     public float moveTime = 0.1f;
     public LayerMask BlockingLayer;
 
@@ -58,4 +59,5 @@ public abstract class Character : MonoBehaviour
     }
     protected abstract void OnCantMove<T>(T component)
         where T : Component;
+    */
 }
