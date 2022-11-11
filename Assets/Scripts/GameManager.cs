@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     //public BoardManager boardScript;
     public int puzzlePieces = 0;
     public int keys = 0;
+    public int puzzlePiecesInLevel = 0;
     public TextMeshProUGUI puzzlePiecesText;
     public TextMeshProUGUI keysText;
 
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         keysText.text = "Keys:" +keys.ToString();
-        puzzlePiecesText.text = "Puzzle Pieces: " + puzzlePieces.ToString();
+        puzzlePiecesText.text = "Puzzle Pieces: " + puzzlePieces.ToString() + "/" + puzzlePiecesInLevel.ToString();
     }
 
     public void GameOver()

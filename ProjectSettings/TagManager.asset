@@ -18,8 +18,8 @@ TagManager:
   - StopMovement
   - BlockingLayer
   - Enemy
-  - 
   - Exit
+  - Key
   - 
   - 
   - 
